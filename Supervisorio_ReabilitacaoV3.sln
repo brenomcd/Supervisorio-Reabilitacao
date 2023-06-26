@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.2017
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controle Esteira", "Controle Esteira.csproj", "{AF0DFACB-3F6B-4363-8B9E-2CBEC8A3E609}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF0DFACB-3F6B-4363-8B9E-2CBEC8A3E609}.Debug|x86.ActiveCfg = Debug|x86
+		{AF0DFACB-3F6B-4363-8B9E-2CBEC8A3E609}.Debug|x86.Build.0 = Debug|x86
+		{AF0DFACB-3F6B-4363-8B9E-2CBEC8A3E609}.Release|x86.ActiveCfg = Release|x86
+		{AF0DFACB-3F6B-4363-8B9E-2CBEC8A3E609}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D3EB8AB3-FA8F-43EC-8316-6AB371626C59}
+	EndGlobalSection
+EndGlobal

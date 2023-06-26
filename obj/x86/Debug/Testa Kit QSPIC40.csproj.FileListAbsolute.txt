@@ -1,0 +1,30 @@
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\bin\Debug\Supervisorio Denco.exe
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\bin\Debug\Supervisorio Denco.pdb
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\obj\x86\Debug\Testa_Kit_QSPIC40.Form1.resources
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\obj\x86\Debug\Testa_Kit_QSPIC40.Properties.Resources.resources
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\obj\x86\Debug\Supervisorio Denco.exe
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\obj\x86\Debug\Supervisorio Denco.pdb
+E:\QSP Tecnologia\Projetos\117- Kit de PIC QSPIC40\CD QSPIC40\Aplicativos Supervisorio\Testa Kit QSPIC40\Testa Kit QSPIC40\bin\Debug\AGauge.dll
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\bin\Debug\Supervisorio Denco.exe
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\bin\Debug\Supervisorio Denco.pdb
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csprojAssemblyReference.cache
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Testa_Kit_QSPIC40.Form1.resources
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Testa_Kit_QSPIC40.Properties.Resources.resources
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csproj.GenerateResource.cache
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csproj.CoreCompileInputs.cache
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csproj.CopyComplete
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Supervisorio Denco.exe
+D:\QSP Tecnologia\Projetos\311- Controlador de esteira\Supervisório\obj\x86\Debug\Supervisorio Denco.pdb
+C:\Users\breno\Desktop\Supervisório\bin\Debug\Supervisorio Denco.exe
+C:\Users\breno\Desktop\Supervisório\bin\Debug\Supervisorio Denco.pdb
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csproj.AssemblyReference.cache
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Testa_Kit_QSPIC40.Form1.resources
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Testa_Kit_QSPIC40.Properties.Resources.resources
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csproj.GenerateResource.cache
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csproj.CoreCompileInputs.cache
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Testa Kit QSPIC40.csproj.CopyComplete
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Supervisorio Denco.exe
+C:\Users\breno\Desktop\Supervisório\obj\x86\Debug\Supervisorio Denco.pdb
