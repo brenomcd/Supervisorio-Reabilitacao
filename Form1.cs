@@ -1,6 +1,4 @@
-﻿// Feito por brenomcd
-
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.IO.Ports;
 using RosSharp.RosBridgeClient;
@@ -15,9 +13,10 @@ namespace Supervisorio_Reabilitacao
         private const double distanciaInicio = 0.9;
         private const double distanciaAumentarVel = 0.65;
         private const double distanciaDiminuirVel = 1.20;
-        private const double maxVel = 4.0;
+        private const double maxVel = 3.0;
         private const double minVel = 1.0;
-        private const string rplidarBridgeIP = "ws://192.168.148.129:9090";
+        //private const string rplidarBridgeIP = "ws://192.168.148.129:9090";
+        private const string rplidarBridgeIP = "ws://172.20.24.251:9090";
 
         private static float distancia = 0.0f;
         private float[] ultimasDistancias = new float[10];
@@ -28,6 +27,7 @@ namespace Supervisorio_Reabilitacao
         private bool iniciou = false;
         
         private RosSocket rosSocket;
+        private string publisherId;
         
         // Instanciando uma classe
         SerialPort SerialCom = new SerialPort();
@@ -68,6 +68,11 @@ namespace Supervisorio_Reabilitacao
 
             if (txt_rec.Length >= 8)
             {
+                Float32 msg = new Float32
+                {
+                    data = (float)velocidadeReal
+                };
+                rosSocket.Publish(publisherId, msg);
                 if (txt_rec.Substring(0, 4) == "ADC=")
                 {
                     var textTemp = txt_rec.Substring(4, txt_rec.Length - 4); // Retrieves the last characters of input
@@ -145,6 +150,7 @@ namespace Supervisorio_Reabilitacao
         {
             // Criação do objeto RosSocket e conexão ao servidor ROS
             rosSocket = new RosSocket(new WebSocketNetProtocol(rplidarBridgeIP));
+            publisherId = rosSocket.Advertise<Float32>("/speed_sub");
 
             // Registro do callback para o tópico "/distance"
             rosSocket.Subscribe<Float32>("/distance", DistanceCallback);
@@ -469,7 +475,7 @@ namespace Supervisorio_Reabilitacao
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
-
+           
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
