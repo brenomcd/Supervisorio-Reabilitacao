@@ -178,3 +178,42 @@ C:\Users\breno\Desktop\MESTRADO\TESTE LIDAR\Supervisório\obj\x86\Debug\Supervis
 C:\Users\breno\Desktop\MESTRADO\TESTE LIDAR\Supervisório\obj\x86\Debug\Supervisorio Denco.pdb
 C:\Users\breno\Desktop\MESTRADO\TESTE LIDAR\Supervisório\obj\x86\Debug\Supervisorio_Reabilitacao.Form1.resources
 C:\Users\breno\Desktop\MESTRADO\TESTE LIDAR\Supervisório\obj\x86\Debug\Controle Esteira.csproj.SuggestedBindingRedirects.cache
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Supervisorio Denco.exe.config
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Supervisorio Denco.exe
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Supervisorio Denco.pdb
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Newtonsoft.Json.Bson.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Newtonsoft.Json.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Buffers.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Memory.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Text.Json.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Threading.Channels.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.ValueTuple.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\websocket-sharp.dll
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Newtonsoft.Json.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Newtonsoft.Json.Bson.pdb
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\Newtonsoft.Json.Bson.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Buffers.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Memory.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Text.Json.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Threading.Channels.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\System.ValueTuple.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\bin\Debug\websocket-sharp.xml
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Controle Esteira.csproj.AssemblyReference.cache
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Supervisorio_Reabilitacao.Form1.resources
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Testa_Kit_QSPIC40.Properties.Resources.resources
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Controle Esteira.csproj.GenerateResource.cache
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Controle Esteira.csproj.CoreCompileInputs.cache
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Controle Esteira.csproj.CopyComplete
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Supervisorio Denco.exe
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Supervisorio Denco.pdb
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Testa_Kit_QSPIC40.frmFormulario.resources

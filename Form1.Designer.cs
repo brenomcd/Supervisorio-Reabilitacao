@@ -29,16 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button5 = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -49,25 +44,25 @@
             this.button10 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
-            this.button20 = new System.Windows.Forms.Button();
-            this.button19 = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.aGauge1 = new AGauge.AGauge();
-            this.button21 = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button3 = new System.Windows.Forms.Button();
             this.txtSpeed = new System.Windows.Forms.TextBox();
             this.txtCoef = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button11 = new System.Windows.Forms.Button();
+            this.button12 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -88,34 +83,6 @@
             this.groupBox1.Text = "PORTA SERIAL";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // button6
-            // 
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Search_icon2;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button6.Location = new System.Drawing.Point(9, 194);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(110, 55);
-            this.button6.TabIndex = 9;
-            this.button6.Text = "Procurar Portas";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button4
-            // 
-            this.button4.Enabled = false;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Send_Icon;
-            this.button4.Location = new System.Drawing.Point(9, 295);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(110, 60);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Enviar comando";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -133,36 +100,6 @@
             this.textBox1.TabIndex = 6;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // button2
-            // 
-            this.button2.Enabled = false;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Port_Icons_close;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(9, 121);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(110, 55);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Fechar Porta";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Port_Icons;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(9, 60);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(110, 55);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Abrir Porta";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -175,9 +112,9 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 33);
+            this.comboBox1.Location = new System.Drawing.Point(9, 33);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(113, 21);
+            this.comboBox1.Size = new System.Drawing.Size(110, 21);
             this.comboBox1.TabIndex = 2;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -185,32 +122,19 @@
             // 
             this.groupBox2.Controls.Add(this.button5);
             this.groupBox2.Controls.Add(this.listBox1);
-            this.groupBox2.Location = new System.Drawing.Point(193, 339);
+            this.groupBox2.Location = new System.Drawing.Point(193, 358);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(277, 112);
+            this.groupBox2.Size = new System.Drawing.Size(247, 93);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Log de comunicação";
             // 
-            // button5
-            // 
-            this.button5.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Clear_Icon;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button5.Location = new System.Drawing.Point(213, 19);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(54, 82);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "Limpar";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(6, 19);
+            this.listBox1.Location = new System.Drawing.Point(6, 24);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(201, 82);
+            this.listBox1.Size = new System.Drawing.Size(172, 56);
             this.listBox1.TabIndex = 0;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
@@ -219,9 +143,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 454);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 445);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(770, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(755, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -240,9 +164,9 @@
             this.groupBox3.Controls.Add(this.button8);
             this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.ForeColor = System.Drawing.Color.Blue;
-            this.groupBox3.Location = new System.Drawing.Point(193, 140);
+            this.groupBox3.Location = new System.Drawing.Point(193, 131);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(531, 179);
+            this.groupBox3.Size = new System.Drawing.Size(531, 165);
             this.groupBox3.TabIndex = 5;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "CONTROLE DA ESTEIRA";
@@ -326,172 +250,6 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // button20
-            // 
-            this.button20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button20.Location = new System.Drawing.Point(813, 486);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(252, 36);
-            this.button20.TabIndex = 13;
-            this.button20.Text = "Desligar todos os Leds";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
-            // button19
-            // 
-            this.button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button19.Location = new System.Drawing.Point(813, 434);
-            this.button19.Name = "button19";
-            this.button19.Size = new System.Drawing.Size(252, 36);
-            this.button19.TabIndex = 12;
-            this.button19.Text = "Ligar todos os Leds";
-            this.button19.UseVisualStyleBackColor = true;
-            this.button19.Click += new System.EventHandler(this.button19_Click);
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.aGauge1);
-            this.groupBox4.Controls.Add(this.button21);
-            this.groupBox4.Controls.Add(this.checkBox1);
-            this.groupBox4.Location = new System.Drawing.Point(813, 39);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(378, 366);
-            this.groupBox4.TabIndex = 6;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Leitura do conversor AD";
-            // 
-            // aGauge1
-            // 
-            this.aGauge1.BaseArcColor = System.Drawing.Color.Gray;
-            this.aGauge1.BaseArcRadius = 180;
-            this.aGauge1.BaseArcStart = 180;
-            this.aGauge1.BaseArcSweep = 270;
-            this.aGauge1.BaseArcWidth = 2;
-            this.aGauge1.Cap_Idx = ((byte)(1));
-            this.aGauge1.CapColors = new System.Drawing.Color[] {
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black,
-        System.Drawing.Color.Black};
-            this.aGauge1.CapPosition = new System.Drawing.Point(10, 10);
-            this.aGauge1.CapsPosition = new System.Drawing.Point[] {
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10),
-        new System.Drawing.Point(10, 10)};
-            this.aGauge1.CapsText = new string[] {
-        "",
-        "",
-        "",
-        "",
-        ""};
-            this.aGauge1.CapText = "";
-            this.aGauge1.Center = new System.Drawing.Point(100, 100);
-            this.aGauge1.Location = new System.Drawing.Point(86, 134);
-            this.aGauge1.MaxValue = 1100F;
-            this.aGauge1.MinValue = 0F;
-            this.aGauge1.Name = "aGauge1";
-            this.aGauge1.NeedleColor1 = AGauge.AGauge.NeedleColorEnum.Gray;
-            this.aGauge1.NeedleColor2 = System.Drawing.Color.DimGray;
-            this.aGauge1.NeedleRadius = 80;
-            this.aGauge1.NeedleType = 0;
-            this.aGauge1.NeedleWidth = 2;
-            this.aGauge1.Range_Idx = ((byte)(1));
-            this.aGauge1.RangeColor = System.Drawing.Color.Red;
-            this.aGauge1.RangeEnabled = true;
-            this.aGauge1.RangeEndValue = 1100F;
-            this.aGauge1.RangeInnerRadius = 70;
-            this.aGauge1.RangeOuterRadius = 80;
-            this.aGauge1.RangesColor = new System.Drawing.Color[] {
-        System.Drawing.Color.LightGreen,
-        System.Drawing.Color.Red,
-        System.Drawing.SystemColors.Control,
-        System.Drawing.SystemColors.Control,
-        System.Drawing.SystemColors.Control};
-            this.aGauge1.RangesEnabled = new bool[] {
-        true,
-        true,
-        false,
-        false,
-        false};
-            this.aGauge1.RangesEndValue = new float[] {
-        820F,
-        1100F,
-        0F,
-        0F,
-        0F};
-            this.aGauge1.RangesInnerRadius = new int[] {
-        70,
-        70,
-        70,
-        70,
-        70};
-            this.aGauge1.RangesOuterRadius = new int[] {
-        80,
-        80,
-        80,
-        80,
-        80};
-            this.aGauge1.RangesStartValue = new float[] {
-        0F,
-        820F,
-        0F,
-        0F,
-        0F};
-            this.aGauge1.RangeStartValue = 820F;
-            this.aGauge1.ScaleLinesInterColor = System.Drawing.Color.Black;
-            this.aGauge1.ScaleLinesInterInnerRadius = 73;
-            this.aGauge1.ScaleLinesInterOuterRadius = 80;
-            this.aGauge1.ScaleLinesInterWidth = 1;
-            this.aGauge1.ScaleLinesMajorColor = System.Drawing.Color.Black;
-            this.aGauge1.ScaleLinesMajorInnerRadius = 70;
-            this.aGauge1.ScaleLinesMajorOuterRadius = 80;
-            this.aGauge1.ScaleLinesMajorStepValue = 100F;
-            this.aGauge1.ScaleLinesMajorWidth = 2;
-            this.aGauge1.ScaleLinesMinorColor = System.Drawing.Color.Gray;
-            this.aGauge1.ScaleLinesMinorInnerRadius = 75;
-            this.aGauge1.ScaleLinesMinorNumOf = 9;
-            this.aGauge1.ScaleLinesMinorOuterRadius = 80;
-            this.aGauge1.ScaleLinesMinorWidth = 1;
-            this.aGauge1.ScaleNumbersColor = System.Drawing.Color.Black;
-            this.aGauge1.ScaleNumbersFormat = null;
-            this.aGauge1.ScaleNumbersRadius = 95;
-            this.aGauge1.ScaleNumbersRotation = 0;
-            this.aGauge1.ScaleNumbersStartScaleLine = 0;
-            this.aGauge1.ScaleNumbersStepScaleLines = 1;
-            this.aGauge1.Size = new System.Drawing.Size(204, 205);
-            this.aGauge1.TabIndex = 3;
-            this.aGauge1.Text = "aGauge1";
-            this.aGauge1.Value = 0F;
-            // 
-            // button21
-            // 
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button21.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Signal_Icon;
-            this.button21.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button21.Location = new System.Drawing.Point(151, 32);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(139, 43);
-            this.button21.TabIndex = 2;
-            this.button21.Text = "Faz leitura ADC";
-            this.button21.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button21.UseVisualStyleBackColor = true;
-            this.button21.Click += new System.EventHandler(this.button21_Click);
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Enabled = false;
-            this.checkBox1.Location = new System.Drawing.Point(151, 89);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(185, 17);
-            this.checkBox1.TabIndex = 1;
-            this.checkBox1.Text = "Habilita/Desabilita Loop de leitura";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
-            // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.DarkGreen;
@@ -504,20 +262,6 @@
             this.textBox2.TabIndex = 0;
             this.textBox2.Text = "000000";
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // button3
-            // 
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Out_Icon;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button3.Location = new System.Drawing.Point(632, 358);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(92, 82);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "SAIR";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // txtSpeed
             // 
@@ -571,25 +315,136 @@
             this.label5.Text = "Velocidade desejada";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
+            // button11
+            // 
+            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.button11.Location = new System.Drawing.Point(655, 316);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(54, 32);
+            this.button11.TabIndex = 19;
+            this.button11.Text = "AUTO";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.button11_Click_1);
+            // 
+            // button12
+            // 
+            this.button12.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.button12.Font = new System.Drawing.Font("Arial", 9.75F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+                | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button12.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.button12.Location = new System.Drawing.Point(21, 12);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(110, 39);
+            this.button12.TabIndex = 20;
+            this.button12.Text = "FORMULÁRIO";
+            this.button12.UseVisualStyleBackColor = false;
+            this.button12.Click += new System.EventHandler(this.button12_Click_1);
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Out_Icon;
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button3.Location = new System.Drawing.Point(638, 354);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(86, 86);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "SAIR";
+            this.button3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button5
+            // 
+            this.button5.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Clear_Icon;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button5.Location = new System.Drawing.Point(184, 19);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(49, 67);
+            this.button5.TabIndex = 1;
+            this.button5.Text = "Limpar";
+            this.button5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button6
+            // 
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Search_icon2;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button6.Location = new System.Drawing.Point(9, 194);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(110, 55);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "Procurar Portas";
+            this.button6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button4
+            // 
+            this.button4.Enabled = false;
+            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Send_Icon;
+            this.button4.Location = new System.Drawing.Point(9, 295);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(110, 60);
+            this.button4.TabIndex = 8;
+            this.button4.Text = "Enviar comando";
+            this.button4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Port_Icons_close;
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button2.Location = new System.Drawing.Point(9, 121);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(110, 55);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "Fechar Porta";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::Testa_Kit_QSPIC40.Properties.Resources.Port_Icons;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.button1.Location = new System.Drawing.Point(9, 60);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(110, 55);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Abrir Porta";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(770, 476);
+            this.ClientSize = new System.Drawing.Size(755, 467);
+            this.Controls.Add(this.button12);
+            this.Controls.Add(this.button11);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtCoef);
             this.Controls.Add(this.txtSpeed);
-            this.Controls.Add(this.button20);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.button19);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -602,8 +457,6 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -634,18 +487,14 @@
         private System.Windows.Forms.Button button14;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Button button20;
-        private System.Windows.Forms.Button button19;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button21;
-        private AGauge.AGauge aGauge1;
         private System.Windows.Forms.TextBox txtSpeed;
         private System.Windows.Forms.TextBox txtCoef;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button12;
     }
 }
 

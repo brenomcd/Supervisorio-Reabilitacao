@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.IO;
 using System.IO.Ports;
 using RosSharp.RosBridgeClient;
 using RosSharp.RosBridgeClient.MessageTypes.Std;
 using RosSharp.RosBridgeClient.Protocols;
+using Testa_Kit_QSPIC40;
 
 namespace Supervisorio_Reabilitacao
 {
-    
     public partial class Form1 : Form
     {
-        private const double distanciaInicio = 0.9;
-        private const double distanciaAumentarVel = 0.65;
-        private const double distanciaDiminuirVel = 1.20;
+
+        private const double distanciaInicio = 0.85;
+        private const double distanciaAumentarVel = 0.60;
+        private const double distanciaDiminuirVel = 1.15;
         private const double maxVel = 3.0;
         private const double minVel = 1.0;
         //private const string rplidarBridgeIP = "ws://192.168.148.129:9090";
@@ -20,15 +22,19 @@ namespace Supervisorio_Reabilitacao
 
         private static float distancia = 0.0f;
         private float[] ultimasDistancias = new float[10];
-        private double velocidadeDesejada = 1.0;
+        private double velocidadeDesejada = 2.0;
         private double velocidadeReal = 0.0;
 
-        private bool partidaAutomatica = true;
+        private bool partidaAutomatica = false;
         private bool iniciou = false;
-        
+
         private RosSocket rosSocket;
         private string publisherId;
-        
+
+        // Instancio um arquivo de dados que será salvo na área de trabalho
+        private StreamWriter sw = new StreamWriter("C:\\Users\\breno\\Desktop\\dados.csv", true);
+        private string nomeVoluntario = "Breno";
+
         // Instanciando uma classe
         SerialPort SerialCom = new SerialPort();
         string bfRecebe = string.Empty;
@@ -38,7 +44,7 @@ namespace Supervisorio_Reabilitacao
         private void DistanceCallback(Float32 message)
         {
             // Atualiza a variável global com o valor recebido
-            for(int i = 8; i >= 0; i--)
+            for (int i = 8; i >= 0; i--)
             {
                 ultimasDistancias[i + 1] = ultimasDistancias[i];
             }
@@ -81,40 +87,40 @@ namespace Supervisorio_Reabilitacao
                     txtSpeed.Text = velocidadeReal.ToString();
                     if (partidaAutomatica)
                     {
-                            if (distancia == 0.0 && iniciou == true)
+                        if (distancia == 0.0 && iniciou == true)
+                        {
+                            // verificar se as ultimas dez posições são zero, evitando erros de reinicialização
+                            bool v = true;
+                            for (int i = 0; i < 10; i++)
                             {
-                                // verificar se as ultimas dez posições são zero, evitando erros de reinicialização
-                                bool v = true;
-                                for(int i = 0; i < 10; i++)
-                                {
-                                    if (ultimasDistancias[i] != 0.0)
-                                        v = false;
-                                }
-                                if (v)
-                                {
-                                    SerialCom.Write("LigaLed4 " + "\r\n");
-                                    listBox1.Items.Add("Enviado -> " + "LigaLed4 " + "\r\n");
-                                    iniciou = false;
-                                    velocidadeDesejada = 0.0;
-                                }
+                                if (ultimasDistancias[i] != 0.0)
+                                    v = false;
                             }
-                            else if (distancia > 0.0 && distancia <= distanciaInicio && iniciou == false)
+                            if (v)
                             {
-                                SerialCom.Write("LigaLed3 " + "\r\n");
-                                listBox1.Items.Add("Enviado -> " + "LigaLed3 " + "\r\n");
-                                iniciou = true;
-                                velocidadeDesejada = 1.0;
+                                SerialCom.Write("LigaLed4 " + "\r\n");
+                                listBox1.Items.Add("Enviado -> " + "LigaLed4 " + "\r\n");
+                                iniciou = false;
+                                velocidadeDesejada = 0.0;
                             }
-                            else if (distancia > 0.0 && distancia < distanciaAumentarVel && iniciou == true)
-                            {
-                                if(velocidadeDesejada < maxVel)
-                                    velocidadeDesejada += 0.1;
-                            }
-                            else if (distancia > distanciaDiminuirVel && iniciou == true)
-                            {
-                                if(velocidadeDesejada > minVel)
-                                    velocidadeDesejada -=0.1;
-                            }
+                        }
+                        else if (distancia > 0.0 && distancia <= distanciaInicio && iniciou == false)
+                        {
+                            SerialCom.Write("LigaLed3 " + "\r\n");
+                            listBox1.Items.Add("Enviado -> " + "LigaLed3 " + "\r\n");
+                            iniciou = true;
+                            velocidadeDesejada = 1.0;
+                        }
+                        else if (distancia > 0.0 && distancia < distanciaAumentarVel && iniciou == true)
+                        {
+                            if (velocidadeDesejada < maxVel)
+                                velocidadeDesejada += 0.1;
+                        }
+                        else if (distancia > distanciaDiminuirVel && iniciou == true)
+                        {
+                            if (velocidadeDesejada > minVel)
+                                velocidadeDesejada -= 0.1;
+                        }
                     }
                     else
                     {
@@ -141,6 +147,8 @@ namespace Supervisorio_Reabilitacao
                     }
                 }
                 txt_rec = string.Empty;
+                // toda vez que recebe a velocidade real, escreve uma nova linha no arquivo de dados
+                sw.WriteLine(velocidadeReal + ";" + distancia + ";" + DateTime.Now + ";" + (partidaAutomatica ? "auto" : "manual") + ";" + nomeVoluntario + ";");
             }
 
             listBox1.Items.Add("Recebido <- " + a);
@@ -148,6 +156,8 @@ namespace Supervisorio_Reabilitacao
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            // primeira linha do arquivo de dados
+            sw.WriteLine("Velocidade;Distancia;Tempo");
             // Criação do objeto RosSocket e conexão ao servidor ROS
             rosSocket = new RosSocket(new WebSocketNetProtocol(rplidarBridgeIP));
             publisherId = rosSocket.Advertise<Float32>("/speed_sub");
@@ -180,7 +190,6 @@ namespace Supervisorio_Reabilitacao
                 button1.Enabled = false;
                 button2.Enabled = true;
                 button4.Enabled = true;
-                checkBox1.Enabled = true;
                 toolStripStatusLabel1.Text = "CONECTADO";
             }
             catch (Exception w)
@@ -200,7 +209,6 @@ namespace Supervisorio_Reabilitacao
                 button1.Enabled = true;
                 button2.Enabled = false;
                 button4.Enabled = false;
-                checkBox1.Enabled = false;
                 toolStripStatusLabel1.Text = "DESCONECTADO";
             }
             catch (Exception W)
@@ -230,6 +238,7 @@ namespace Supervisorio_Reabilitacao
 
         private void button3_Click(object sender, EventArgs e)
         {
+            sw.Close();
             Close();
         }
 
@@ -439,17 +448,7 @@ namespace Supervisorio_Reabilitacao
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked == true)
-            {
-                if (SerialCom.IsOpen)
-                {
-                    SerialCom.Write("HabLoopAdc " + "\r\n");
-                    listBox1.Items.Add("Enviado -> " + "HabLoopAdc  " + "\r\n");
-                }
-                else
-                    MessageBox.Show("A porta não está aberta, clique no botão Abrir Porta !");
-            }
-            else
+            
             {
                 if (SerialCom.IsOpen)
                 {
@@ -475,7 +474,7 @@ namespace Supervisorio_Reabilitacao
 
         private void groupBox3_Enter(object sender, EventArgs e)
         {
-           
+
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -516,6 +515,46 @@ namespace Supervisorio_Reabilitacao
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            if (groupBox3.Enabled)
+            {
+                // Desabilitar o evento groupBox3_Enter
+                groupBox3.Enter -= groupBox3_Enter;
+                groupBox3.Enabled = false;
+                partidaAutomatica = true;
+            }
+            else
+            {
+                // Habilitar o evento groupBox3_Enter
+                groupBox3.Enter += groupBox3_Enter;
+                groupBox3.Enabled = true;
+                partidaAutomatica = false;
+            }
+
+        }
+
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button12_Click_1(object sender, EventArgs e)
+        {
+            frmFormulario OutroForm = new frmFormulario();
+            OutroForm.ShowDialog();
         }
     }
 }
