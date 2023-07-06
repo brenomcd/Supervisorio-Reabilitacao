@@ -1,21 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Testa_Kit_QSPIC40
+namespace Supervisorio_Reabilitacao
 {
     public partial class frmFormulario : Form
     {
-        private object cmbSexo;
-        private object txtIdade;
-        private object txtAltura;
-        private object txtPeso;
+        public string nome;
+        public string idade;
+        public string altura;
+        public string peso;
+        public string sexo;
+        public bool formularioPreenchido = false;
+
         private bool simSelecionado;
 
         public frmFormulario()
@@ -37,12 +33,10 @@ namespace Testa_Kit_QSPIC40
         {
             txtNome.Clear();
             txtContato.Clear();
-            comboBox1.Items.Clear();
-            comboBox2.Items.Clear();
-            comboBox3.Items.Clear();
-            comboBox4.Items.Clear();
-
-            
+            textAltura.Clear();
+            textIdade.Clear();
+            textPeso.Clear();
+            textSexo.Clear();            
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -61,11 +55,13 @@ namespace Testa_Kit_QSPIC40
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            string nome = txtNome.Text;
-            int idade = int.Parse((string)txtIdade);
-            float altura = float.Parse((string)txtAltura);
-            float peso = float.Parse((string)txtPeso);
-            string sexo = cmbSexo.ToString();
+            nome = txtNome.Text;
+            idade = textIdade.Text;
+            altura = textAltura.Text;
+            peso = textPeso.Text;
+            sexo = textSexo.Text;
+
+            formularioPreenchido = true;
 
             string mensagem = $"Nome: {nome}\nIdade: {idade}\nAltura: {altura}\nPeso: {peso}\nSexo: {sexo}";
             MessageBox.Show(mensagem, "Dados do formulário");
@@ -117,6 +113,26 @@ namespace Testa_Kit_QSPIC40
         }
 
         private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblIdade_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
         }

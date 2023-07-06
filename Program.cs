@@ -17,5 +17,10 @@ namespace Supervisorio_Reabilitacao
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
         }
+
+        static internal void Iniciar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

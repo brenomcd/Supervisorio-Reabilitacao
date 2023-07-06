@@ -1,5 +1,5 @@
 ﻿
-namespace Testa_Kit_QSPIC40
+namespace Supervisorio_Reabilitacao
 {
     partial class frmFormulario
     {
@@ -30,6 +30,11 @@ namespace Testa_Kit_QSPIC40
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textPeso = new System.Windows.Forms.TextBox();
+            this.textAltura = new System.Windows.Forms.TextBox();
+            this.textSexo = new System.Windows.Forms.TextBox();
+            this.textIdade = new System.Windows.Forms.TextBox();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.txtContato = new System.Windows.Forms.TextBox();
             this.lblContato = new System.Windows.Forms.Label();
             this.rbtNao = new System.Windows.Forms.RadioButton();
@@ -38,21 +43,20 @@ namespace Testa_Kit_QSPIC40
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btnEnviar = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.lblPeso = new System.Windows.Forms.Label();
             this.lblAltura = new System.Windows.Forms.Label();
             this.lblSexo = new System.Windows.Forms.Label();
             this.lblIdade = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
-            this.btnFechar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textPeso);
+            this.groupBox1.Controls.Add(this.textAltura);
+            this.groupBox1.Controls.Add(this.textSexo);
+            this.groupBox1.Controls.Add(this.textIdade);
             this.groupBox1.Controls.Add(this.btnFechar);
             this.groupBox1.Controls.Add(this.txtContato);
             this.groupBox1.Controls.Add(this.lblContato);
@@ -62,10 +66,6 @@ namespace Testa_Kit_QSPIC40
             this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Controls.Add(this.btnEnviar);
             this.groupBox1.Controls.Add(this.btnLimpar);
-            this.groupBox1.Controls.Add(this.comboBox4);
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.lblPeso);
             this.groupBox1.Controls.Add(this.lblAltura);
             this.groupBox1.Controls.Add(this.lblSexo);
@@ -78,6 +78,47 @@ namespace Testa_Kit_QSPIC40
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "PARTICIPANTE";
+            // 
+            // textPeso
+            // 
+            this.textPeso.Location = new System.Drawing.Point(113, 197);
+            this.textPeso.Name = "textPeso";
+            this.textPeso.Size = new System.Drawing.Size(150, 26);
+            this.textPeso.TabIndex = 20;
+            // 
+            // textAltura
+            // 
+            this.textAltura.Location = new System.Drawing.Point(113, 149);
+            this.textAltura.Name = "textAltura";
+            this.textAltura.Size = new System.Drawing.Size(150, 26);
+            this.textAltura.TabIndex = 19;
+            this.textAltura.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // textSexo
+            // 
+            this.textSexo.Location = new System.Drawing.Point(113, 107);
+            this.textSexo.Name = "textSexo";
+            this.textSexo.Size = new System.Drawing.Size(150, 26);
+            this.textSexo.TabIndex = 18;
+            this.textSexo.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // textIdade
+            // 
+            this.textIdade.Location = new System.Drawing.Point(113, 69);
+            this.textIdade.Name = "textIdade";
+            this.textIdade.Size = new System.Drawing.Size(150, 26);
+            this.textIdade.TabIndex = 17;
+            this.textIdade.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Location = new System.Drawing.Point(304, 408);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(95, 34);
+            this.btnFechar.TabIndex = 16;
+            this.btnFechar.Text = "FECHAR";
+            this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // txtContato
             // 
@@ -162,116 +203,6 @@ namespace Testa_Kit_QSPIC40
             this.btnLimpar.UseVisualStyleBackColor = true;
             this.btnLimpar.Click += new System.EventHandler(this.btnApagar_Click);
             // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Items.AddRange(new object[] {
-            "60",
-            "61",
-            "62",
-            "63",
-            "64",
-            "65",
-            "66",
-            "67",
-            "68",
-            "69",
-            "70",
-            "71",
-            "72",
-            "73",
-            "74",
-            "75",
-            "76",
-            "77",
-            "78",
-            "79",
-            "80",
-            "81",
-            "82",
-            "83",
-            "84",
-            "85"});
-            this.comboBox4.Location = new System.Drawing.Point(113, 201);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(150, 28);
-            this.comboBox4.TabIndex = 7;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Items.AddRange(new object[] {
-            "1,60",
-            "1,61",
-            "1,62",
-            "1,63",
-            "1,64",
-            "1,65",
-            "1,66",
-            "1,67",
-            "1,68",
-            "1,69",
-            "1,70",
-            "1,71",
-            "1,72",
-            "1,73",
-            "1,74",
-            "1,75",
-            "1,76",
-            "1,77",
-            "1,78",
-            "1,79",
-            "1,80"});
-            this.comboBox3.Location = new System.Drawing.Point(113, 153);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(150, 28);
-            this.comboBox3.TabIndex = 6;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
-            "MASCULINO",
-            "FEMININO"});
-            this.comboBox2.Location = new System.Drawing.Point(113, 107);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(150, 28);
-            this.comboBox2.TabIndex = 5;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25",
-            "26",
-            "27",
-            "28",
-            "29",
-            "30",
-            "31",
-            "32",
-            "33",
-            "34",
-            "35",
-            "36",
-            "37",
-            "38",
-            "39",
-            "40"});
-            this.comboBox1.Location = new System.Drawing.Point(113, 63);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 28);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
-            // 
             // lblPeso
             // 
             this.lblPeso.AutoSize = true;
@@ -312,6 +243,7 @@ namespace Testa_Kit_QSPIC40
             this.lblIdade.Size = new System.Drawing.Size(49, 16);
             this.lblIdade.TabIndex = 1;
             this.lblIdade.Text = "IDADE";
+            this.lblIdade.Click += new System.EventHandler(this.lblIdade_Click);
             // 
             // lblNome
             // 
@@ -322,16 +254,6 @@ namespace Testa_Kit_QSPIC40
             this.lblNome.Size = new System.Drawing.Size(48, 16);
             this.lblNome.TabIndex = 0;
             this.lblNome.Text = "NOME";
-            // 
-            // btnFechar
-            // 
-            this.btnFechar.Location = new System.Drawing.Point(304, 408);
-            this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(95, 34);
-            this.btnFechar.TabIndex = 16;
-            this.btnFechar.Text = "FECHAR";
-            this.btnFechar.UseVisualStyleBackColor = true;
-            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // frmFormulario
             // 
@@ -356,10 +278,6 @@ namespace Testa_Kit_QSPIC40
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblPeso;
         private System.Windows.Forms.Label lblAltura;
-        private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Button btnEnviar;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.TextBox txtNome;
@@ -369,5 +287,9 @@ namespace Testa_Kit_QSPIC40
         private System.Windows.Forms.TextBox txtContato;
         private System.Windows.Forms.Label lblContato;
         private System.Windows.Forms.Button btnFechar;
+        private System.Windows.Forms.TextBox textPeso;
+        private System.Windows.Forms.TextBox textAltura;
+        private System.Windows.Forms.TextBox textSexo;
+        private System.Windows.Forms.TextBox textIdade;
     }
 }

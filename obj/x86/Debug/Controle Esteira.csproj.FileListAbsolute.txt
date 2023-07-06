@@ -216,4 +216,4 @@ C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Controle
 C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Controle Esteira.csproj.CopyComplete
 C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Supervisorio Denco.exe
 C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Supervisorio Denco.pdb
-C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Testa_Kit_QSPIC40.frmFormulario.resources
+C:\Users\breno\Documents\Github\Supervisorio-Reabilitacao\obj\x86\Debug\Supervisorio_Reabilitacao.frmFormulario.resources

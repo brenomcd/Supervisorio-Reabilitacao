@@ -5,40 +5,76 @@ using System.IO.Ports;
 using RosSharp.RosBridgeClient;
 using RosSharp.RosBridgeClient.MessageTypes.Std;
 using RosSharp.RosBridgeClient.Protocols;
-using Testa_Kit_QSPIC40;
+using System.Threading;
 
 namespace Supervisorio_Reabilitacao
 {
     public partial class Form1 : Form
     {
 
+        private const string path_csv = "C:\\Users\\breno\\Desktop\\Dados\\";
+        private const string header = "Velocidade voluntário;Velocidade robô;Distancia;Tempo;Modo;";
+
         private const double distanciaInicio = 0.85;
         private const double distanciaAumentarVel = 0.60;
         private const double distanciaDiminuirVel = 1.15;
-        private const double maxVel = 3.0;
+        private const double maxVel = 4.0;
         private const double minVel = 1.0;
-        //private const string rplidarBridgeIP = "ws://192.168.148.129:9090";
-        private const string rplidarBridgeIP = "ws://172.20.24.251:9090";
+        private const string rplidarBridgeIP = "ws://172.20.25.193:9090";
 
         private static float distancia = 0.0f;
         private float[] ultimasDistancias = new float[10];
-        private double velocidadeDesejada = 2.0;
+        private double velocidadeDesejada = 1.0;
         private double velocidadeReal = 0.0;
 
+        private const double velocidadeVirtual1 = 1.3;
+        private const double velocidadeVirtual2 = 1.4;
+        private const double velocidadeVirtual3 = 1.5;
+        private const double velocidadeVirtual4 = 1.2;
+        private const double velocidadeVirtual5 = 2.0;
+        private int velocidadeVirtualAtual = 1;
+
+        private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private bool partidaAutomatica = false;
         private bool iniciou = false;
+        private bool iniciou2 = false;
 
         private RosSocket rosSocket;
-        private string publisherId;
+        private string publisherId; // esteira
+        private string publisherId2; // jogo
+
+        private frmFormulario OutroForm;
 
         // Instancio um arquivo de dados que será salvo na área de trabalho
-        private StreamWriter sw = new StreamWriter("C:\\Users\\breno\\Desktop\\dados.csv", true);
-        private string nomeVoluntario = "Breno";
+        private StreamWriter sw;
 
         // Instanciando uma classe
         SerialPort SerialCom = new SerialPort();
         string bfRecebe = string.Empty;
         public delegate void Fdelegate(string a);
+
+        private void InitializeTimer()
+        {
+            // Run this procedure in an appropriate event.  
+            timer.Interval = 1000 * 20;
+            timer.Enabled = true;
+            // Hook up timer's tick event handler.  
+            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+        }
+
+        private void timer_Tick(object sender, System.EventArgs e)
+        {
+                if (velocidadeVirtualAtual >= 5)
+                {
+                    velocidadeVirtualAtual = 1;
+                }
+                else
+                {
+                    velocidadeVirtualAtual++;
+                }
+        }
+
+
 
         // Callback chamado quando uma mensagem do tópico "/distance" é recebida
         private void DistanceCallback(Float32 message)
@@ -78,7 +114,24 @@ namespace Supervisorio_Reabilitacao
                 {
                     data = (float)velocidadeReal
                 };
+                Float32 msg2 = new Float32();
+                if (iniciou2 == false)
+                {
+                    msg2.data = 0f;
+                }
+                else if (velocidadeVirtualAtual == 1)
+                    msg2.data = (float)velocidadeVirtual1;
+                else if (velocidadeVirtualAtual == 2)
+                    msg2.data = (float)velocidadeVirtual2;
+                else if (velocidadeVirtualAtual == 3)
+                    msg2.data = (float)velocidadeVirtual3;
+                else if (velocidadeVirtualAtual == 4)
+                    msg2.data = (float)velocidadeVirtual4;
+                else if (velocidadeVirtualAtual == 5)
+                    msg2.data = (float)velocidadeVirtual5;
+
                 rosSocket.Publish(publisherId, msg);
+                rosSocket.Publish(publisherId2, msg2);
                 if (txt_rec.Substring(0, 4) == "ADC=")
                 {
                     var textTemp = txt_rec.Substring(4, txt_rec.Length - 4); // Retrieves the last characters of input
@@ -122,18 +175,6 @@ namespace Supervisorio_Reabilitacao
                                 velocidadeDesejada -= 0.1;
                         }
                     }
-                    else
-                    {
-                        try
-                        {
-                            velocidadeDesejada = Convert.ToDouble(txtCoef.Text);
-                        }
-                        catch (FormatException)
-                        {
-                            velocidadeDesejada = 0;
-                        }
-
-                    }
                     if (velocidadeReal >= 0.7 && velocidadeDesejada != 0 && velocidadeReal < 14.8)
                     {
                         if (velocidadeDesejada < velocidadeReal - 0.09)
@@ -146,9 +187,34 @@ namespace Supervisorio_Reabilitacao
                         }
                     }
                 }
-                txt_rec = string.Empty;
+                // txt_rec = string.Empty
                 // toda vez que recebe a velocidade real, escreve uma nova linha no arquivo de dados
-                sw.WriteLine(velocidadeReal + ";" + distancia + ";" + DateTime.Now + ";" + (partidaAutomatica ? "auto" : "manual") + ";" + nomeVoluntario + ";");
+                if (iniciou == true)
+                {
+                    if (velocidadeReal >= 0.7 && iniciou2 == false)
+                    {
+                        InitializeTimer();
+                        iniciou2 = true;
+                    }
+
+                    float velocidadeRobo = 0;
+                    if (iniciou2 == false)
+                    {
+                        velocidadeRobo = 0f;
+                    }
+                    else if (velocidadeVirtualAtual == 1)
+                        velocidadeRobo = (float)velocidadeVirtual1;
+                    else if (velocidadeVirtualAtual == 2)
+                        velocidadeRobo = (float)velocidadeVirtual2;
+                    else if (velocidadeVirtualAtual == 3)
+                        velocidadeRobo = (float)velocidadeVirtual3;
+                    else if (velocidadeVirtualAtual == 4)
+                        velocidadeRobo = (float)velocidadeVirtual4;
+                    else if (velocidadeVirtualAtual == 5)
+                        velocidadeRobo = (float)velocidadeVirtual5;
+
+                    sw.WriteLine(velocidadeReal + ";" + velocidadeRobo + ";" + distancia + ";" + DateTime.Now + ";" + (partidaAutomatica ? "auto" : "manual") + ";");
+                }
             }
 
             listBox1.Items.Add("Recebido <- " + a);
@@ -156,14 +222,6 @@ namespace Supervisorio_Reabilitacao
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // primeira linha do arquivo de dados
-            sw.WriteLine("Velocidade;Distancia;Tempo");
-            // Criação do objeto RosSocket e conexão ao servidor ROS
-            rosSocket = new RosSocket(new WebSocketNetProtocol(rplidarBridgeIP));
-            publisherId = rosSocket.Advertise<Float32>("/speed_sub");
-
-            // Registro do callback para o tópico "/distance"
-            rosSocket.Subscribe<Float32>("/distance", DistanceCallback);
             int i = 0;
             foreach (string str in SerialPort.GetPortNames())
             {
@@ -176,26 +234,45 @@ namespace Supervisorio_Reabilitacao
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (SerialCom.IsOpen == true) SerialCom.Close();
-
-            SerialCom.PortName = comboBox1.Text;
-            SerialCom.BaudRate = 9600;
-            SerialCom.DataBits = 8;
-            SerialCom.StopBits = (StopBits)1;
-            SerialCom.Parity = (Parity)(0);
-
-            try
+            if (OutroForm != null)
             {
-                SerialCom.Open();
-                button1.Enabled = false;
-                button2.Enabled = true;
-                button4.Enabled = true;
-                toolStripStatusLabel1.Text = "CONECTADO";
-            }
-            catch (Exception w)
-            {
-                //                MessageBox.Show(w.ToString());
-                MessageBox.Show("Não foi possivel abrir a porta serial !");
+                if (OutroForm.formularioPreenchido)
+                {
+                    sw = new StreamWriter(path_csv + OutroForm.nome + ".csv", true);
+                    if (SerialCom.IsOpen == true) SerialCom.Close();
+
+                    SerialCom.PortName = comboBox1.Text;
+                    SerialCom.BaudRate = 9600;
+                    SerialCom.DataBits = 8;
+                    SerialCom.StopBits = (StopBits)1;
+                    SerialCom.Parity = (Parity)(0);
+
+                    try
+                    {
+                        // cria o arquivo csv com os dados do formulario
+                        // sw = new StreamWriter(path_csv + OutroForm.nome + ".csv", true);
+                        sw.WriteLine(" ; ; ; ; ;" + OutroForm.nome + ";" + OutroForm.sexo + ";" + OutroForm.peso + ";" + OutroForm.altura + ";" + OutroForm.idade + ";");
+                        SerialCom.Open();
+                        // primeira linha do arquivo de dados
+                        sw.WriteLine(header);
+                        // Criação do objeto RosSocket e conexão ao servidor ROS
+                        rosSocket = new RosSocket(new WebSocketNetProtocol(rplidarBridgeIP));
+                        publisherId = rosSocket.Advertise<Float32>("/speed_sub");
+                        publisherId2 = rosSocket.Advertise<Float32>("/speed2_sub");
+
+                        // Registro do callback para o tópico "/distance"
+                        rosSocket.Subscribe<Float32>("/distance", DistanceCallback);
+                        button1.Enabled = false;
+                        button2.Enabled = true;
+                        button4.Enabled = true;
+                        toolStripStatusLabel1.Text = "CONECTADO";
+                    }
+                    catch (Exception w)
+                    {
+                        //MessageBox.Show(w.ToString());
+                        MessageBox.Show("Não foi possivel abrir a porta serial !");
+                    }
+                }
             }
         }
 
@@ -238,7 +315,20 @@ namespace Supervisorio_Reabilitacao
 
         private void button3_Click(object sender, EventArgs e)
         {
-            sw.Close();
+            if (SerialCom.IsOpen)
+            {
+                SerialCom.Write("LigaLed4 " + "\r\n");
+                listBox1.Items.Add("Enviado -> " + "LigaLed4 " + "\r\n");
+                iniciou = false;
+            }
+            else
+                MessageBox.Show("A porta não está aberta, clique no botão Abrir Porta !");
+            Float32 msg = new Float32();
+            msg.data = 0f;
+            rosSocket.Publish(publisherId, msg);
+            rosSocket.Publish(publisherId2, msg);
+            if (sw != null)
+                sw.Close();
             Close();
         }
 
@@ -294,24 +384,14 @@ namespace Supervisorio_Reabilitacao
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (SerialCom.IsOpen)
-            {
-                SerialCom.Write("LigaLed1 " + "\r\n");
-                listBox1.Items.Add("Enviado -> " + "LigaLed1 " + "\r\n");
-            }
-            else
-                MessageBox.Show("A porta não está aberta, clique no botão Abrir Porta !");
+            if (velocidadeDesejada > minVel)
+                velocidadeDesejada -= 0.1;
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (SerialCom.IsOpen)
-            {
-                SerialCom.Write("LigaLed2 " + "\r\n");
-                listBox1.Items.Add("Enviado -> " + "LigaLed2 " + "\r\n");
-            }
-            else
-                MessageBox.Show("A porta não está aberta, clique no botão Abrir Porta !");
+            if (velocidadeDesejada < maxVel)
+                velocidadeDesejada += 0.1;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -320,6 +400,7 @@ namespace Supervisorio_Reabilitacao
             {
                 SerialCom.Write("LigaLed3 " + "\r\n");
                 listBox1.Items.Add("Enviado -> " + "LigaLed3 " + "\r\n");
+                iniciou = true;
             }
             else
                 MessageBox.Show("A porta não está aberta, clique no botão Abrir Porta !");
@@ -331,6 +412,7 @@ namespace Supervisorio_Reabilitacao
             {
                 SerialCom.Write("LigaLed4 " + "\r\n");
                 listBox1.Items.Add("Enviado -> " + "LigaLed4 " + "\r\n");
+                iniciou = false;
             }
             else
                 MessageBox.Show("A porta não está aberta, clique no botão Abrir Porta !");
@@ -525,6 +607,7 @@ namespace Supervisorio_Reabilitacao
                 groupBox3.Enter -= groupBox3_Enter;
                 groupBox3.Enabled = false;
                 partidaAutomatica = true;
+                velocidadeDesejada = 0.0;
             }
             else
             {
@@ -532,6 +615,7 @@ namespace Supervisorio_Reabilitacao
                 groupBox3.Enter += groupBox3_Enter;
                 groupBox3.Enabled = true;
                 partidaAutomatica = false;
+                velocidadeDesejada = 1.0;
             }
 
         }
@@ -553,7 +637,7 @@ namespace Supervisorio_Reabilitacao
 
         private void button12_Click_1(object sender, EventArgs e)
         {
-            frmFormulario OutroForm = new frmFormulario();
+            OutroForm = new frmFormulario();
             OutroForm.ShowDialog();
         }
     }
