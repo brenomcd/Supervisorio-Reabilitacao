@@ -16,7 +16,7 @@ echo \
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
-## Rodar rplidar-bridge na sua versão mais atual
+## Rodar rplidar-bridge na sua versão mais atual e permitir acesso a rede local e aos dispositivos USBs (no caso o lidar)
 
 ```bash
 sudo docker run -it --rm --network host --privileged -v /dev/bus/usb:/dev/bus/usb brenomcd/rplidar-bridge
