@@ -12,30 +12,27 @@ namespace Supervisorio_Reabilitacao
     public partial class Form1 : Form
     {
 
-        private const string path_csv = "C:\\Users\\breno\\Desktop\\Dados\\";
-        private const string header = "Velocidade voluntário;Velocidade robô;Distancia;Tempo;Modo;";
+        private const string path_csv = "C:\\Users\\ufesn\\OneDrive\\Desktop\\Experimentos\\";
+        private const string header = "Velocidade voluntario;Velocidade robo;Distancia;Tempo;Modo;";
 
         private const double distanciaInicio = 0.85;
         private const double distanciaAumentarVel = 0.60;
         private const double distanciaDiminuirVel = 1.15;
         private const double maxVel = 4.0;
         private const double minVel = 1.0;
-        private const string rplidarBridgeIP = "ws://172.20.25.193:9090";
+        private const string rplidarBridgeIP = "ws://192.168.137.129:9090";
 
         private static float distancia = 0.0f;
         private float[] ultimasDistancias = new float[10];
         private double velocidadeDesejada = 1.0;
         private double velocidadeReal = 0.0;
 
-        private const double velocidadeVirtual1 = 1.3;
-        private const double velocidadeVirtual2 = 1.4;
-        private const double velocidadeVirtual3 = 1.5;
-        private const double velocidadeVirtual4 = 1.2;
-        private const double velocidadeVirtual5 = 2.0;
+        private double[] velocidadesVirtuais = new double[6] {-1.0, 1.5, 1.9, 2.3, 1.9, 2.6};
         private int velocidadeVirtualAtual = 1;
 
         private System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         private bool partidaAutomatica = false;
+        private bool velocidadeAutomatica = true;
         private bool iniciou = false;
         private bool iniciou2 = false;
 
@@ -56,7 +53,8 @@ namespace Supervisorio_Reabilitacao
         private void InitializeTimer()
         {
             // Run this procedure in an appropriate event.  
-            timer.Interval = 1000 * 20;
+            timer.Interval = 6000 * 12;
+            //timer.Interval = 1000 * 10;
             timer.Enabled = true;
             // Hook up timer's tick event handler.  
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
@@ -64,9 +62,10 @@ namespace Supervisorio_Reabilitacao
 
         private void timer_Tick(object sender, System.EventArgs e)
         {
-                if (velocidadeVirtualAtual >= 5)
+                if (velocidadeVirtualAtual == 5)
                 {
-                    velocidadeVirtualAtual = 1;
+                    velocidadeVirtualAtual = 0;
+                    timer.Enabled = false;
                 }
                 else
                 {
@@ -97,6 +96,7 @@ namespace Supervisorio_Reabilitacao
         void SerialCom_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             //throw new NotImplementedException();
+            
             bfRecebe = SerialCom.ReadLine();
             this.BeginInvoke(new Fdelegate(recebe_serial), new object[] { bfRecebe });
         }
@@ -110,25 +110,18 @@ namespace Supervisorio_Reabilitacao
 
             if (txt_rec.Length >= 8)
             {
-                Float32 msg = new Float32
-                {
-                    data = (float)velocidadeReal
-                };
+                Float32 msg = new Float32();
+                msg.data = (float)velocidadeReal;
+                
                 Float32 msg2 = new Float32();
                 if (iniciou2 == false)
                 {
                     msg2.data = 0f;
                 }
-                else if (velocidadeVirtualAtual == 1)
-                    msg2.data = (float)velocidadeVirtual1;
-                else if (velocidadeVirtualAtual == 2)
-                    msg2.data = (float)velocidadeVirtual2;
-                else if (velocidadeVirtualAtual == 3)
-                    msg2.data = (float)velocidadeVirtual3;
-                else if (velocidadeVirtualAtual == 4)
-                    msg2.data = (float)velocidadeVirtual4;
-                else if (velocidadeVirtualAtual == 5)
-                    msg2.data = (float)velocidadeVirtual5;
+                else
+                {
+                    msg2.data = (float)velocidadesVirtuais[velocidadeVirtualAtual];
+                }
 
                 rosSocket.Publish(publisherId, msg);
                 rosSocket.Publish(publisherId2, msg2);
@@ -140,41 +133,58 @@ namespace Supervisorio_Reabilitacao
                     txtSpeed.Text = velocidadeReal.ToString();
                     if (partidaAutomatica)
                     {
-                        if (distancia == 0.0 && iniciou == true)
-                        {
-                            // verificar se as ultimas dez posições são zero, evitando erros de reinicialização
-                            bool v = true;
-                            for (int i = 0; i < 10; i++)
+                        if (velocidadeAutomatica) {
+                            velocidadeDesejada = velocidadesVirtuais[velocidadeVirtualAtual];
+                            if(distancia > 0.0 && distancia <= distanciaInicio && iniciou == false && velocidadeDesejada != -1.0)
                             {
-                                if (ultimasDistancias[i] != 0.0)
-                                    v = false;
+                                SerialCom.Write("LigaLed3 " + "\r\n");
+                                listBox1.Items.Add("Enviado -> " + "LigaLed3 " + "\r\n");
+                                iniciou = true;
                             }
-                            if (v)
+                            if(velocidadeDesejada == -1.0 && iniciou == true)
                             {
                                 SerialCom.Write("LigaLed4 " + "\r\n");
                                 listBox1.Items.Add("Enviado -> " + "LigaLed4 " + "\r\n");
                                 iniciou = false;
-                                velocidadeDesejada = 0.0;
                             }
                         }
-                        else if (distancia > 0.0 && distancia <= distanciaInicio && iniciou == false)
+                        else
                         {
-                            SerialCom.Write("LigaLed3 " + "\r\n");
-                            listBox1.Items.Add("Enviado -> " + "LigaLed3 " + "\r\n");
-                            iniciou = true;
-                            velocidadeDesejada = 1.0;
+                            if (distancia == 0.0 && iniciou == true)
+                            {
+                                // verificar se as ultimas dez posições são zero, evitando erros de reinicialização
+                                bool v = true;
+                                for (int i = 0; i < 10; i++)
+                                {
+                                    if (ultimasDistancias[i] != 0.0)
+                                        v = false;
+                                }
+                                if (v)
+                                {
+                                    SerialCom.Write("LigaLed4 " + "\r\n");
+                                    listBox1.Items.Add("Enviado -> " + "LigaLed4 " + "\r\n");
+                                    iniciou = false;
+                                    velocidadeDesejada = 0.0;
+                                }
+                            }
+                            else if (distancia > 0.0 && distancia <= distanciaInicio && iniciou == false)
+                            {
+                                SerialCom.Write("LigaLed3 " + "\r\n");
+                                listBox1.Items.Add("Enviado -> " + "LigaLed3 " + "\r\n");
+                                iniciou = true;
+                                velocidadeDesejada = 1.0;
+                            }
+                            else if (distancia > 0.0 && distancia < distanciaAumentarVel && iniciou == true)
+                            {
+                                if (velocidadeDesejada < maxVel)
+                                    velocidadeDesejada += 0.1;
+                            }
+                            else if (distancia > distanciaDiminuirVel && iniciou == true)
+                            {
+                                if (velocidadeDesejada > minVel)
+                                    velocidadeDesejada -= 0.1;
+                            }
                         }
-                        else if (distancia > 0.0 && distancia < distanciaAumentarVel && iniciou == true)
-                        {
-                            if (velocidadeDesejada < maxVel)
-                                velocidadeDesejada += 0.1;
-                        }
-                        else if (distancia > distanciaDiminuirVel && iniciou == true)
-                        {
-                            if (velocidadeDesejada > minVel)
-                                velocidadeDesejada -= 0.1;
-                        }
-                    }
                     if (velocidadeReal >= 0.7 && velocidadeDesejada != 0 && velocidadeReal < 14.8)
                     {
                         if (velocidadeDesejada < velocidadeReal - 0.09)
@@ -186,6 +196,8 @@ namespace Supervisorio_Reabilitacao
                             aumentarVelocidade();
                         }
                     }
+                    }
+
                 }
                 // txt_rec = string.Empty
                 // toda vez que recebe a velocidade real, escreve uma nova linha no arquivo de dados
@@ -197,21 +209,15 @@ namespace Supervisorio_Reabilitacao
                         iniciou2 = true;
                     }
 
-                    float velocidadeRobo = 0;
+                    float velocidadeRobo;
                     if (iniciou2 == false)
                     {
                         velocidadeRobo = 0f;
                     }
-                    else if (velocidadeVirtualAtual == 1)
-                        velocidadeRobo = (float)velocidadeVirtual1;
-                    else if (velocidadeVirtualAtual == 2)
-                        velocidadeRobo = (float)velocidadeVirtual2;
-                    else if (velocidadeVirtualAtual == 3)
-                        velocidadeRobo = (float)velocidadeVirtual3;
-                    else if (velocidadeVirtualAtual == 4)
-                        velocidadeRobo = (float)velocidadeVirtual4;
-                    else if (velocidadeVirtualAtual == 5)
-                        velocidadeRobo = (float)velocidadeVirtual5;
+                    else
+                    {
+                        velocidadeRobo = (float)velocidadesVirtuais[velocidadeVirtualAtual];
+                    }
 
                     sw.WriteLine(velocidadeReal + ";" + velocidadeRobo + ";" + distancia + ";" + DateTime.Now + ";" + (partidaAutomatica ? "auto" : "manual") + ";");
                 }
@@ -384,14 +390,30 @@ namespace Supervisorio_Reabilitacao
 
         private void button7_Click(object sender, EventArgs e)
         {
-            if (velocidadeDesejada > minVel)
-                velocidadeDesejada -= 0.1;
+            if (partidaAutomatica)
+            {
+                if (velocidadeDesejada > minVel)
+                    velocidadeDesejada -= 0.1;
+            }
+            else
+            {
+                diminuirVelocidade();
+
+            }
         }
 
         private void button8_Click(object sender, EventArgs e)
         {
-            if (velocidadeDesejada < maxVel)
-                velocidadeDesejada += 0.1;
+            if (partidaAutomatica)
+            {
+                if (velocidadeDesejada < maxVel)
+                    velocidadeDesejada += 0.1;
+            }
+            else
+            {
+                aumentarVelocidade();
+
+           }
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -639,6 +661,11 @@ namespace Supervisorio_Reabilitacao
         {
             OutroForm = new frmFormulario();
             OutroForm.ShowDialog();
+        }
+
+        private void button15_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
